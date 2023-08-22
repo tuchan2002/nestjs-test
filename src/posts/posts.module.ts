@@ -4,8 +4,7 @@ import { PostsController } from './posts.controller';
 import { PostsService } from './posts.service';
 
 @Module({
-    imports: [StoreModule.register({
-        dirname: 'store',
+    imports: [StoreModule.forFeature({
         filename: "posts.json"
     })],
     controllers: [PostsController],
