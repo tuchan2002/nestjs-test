@@ -4,7 +4,9 @@ import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
-    constructor(@Inject("USER_SERVICE_1") private readonly userService: UserService) {}
+    constructor(@Inject(UserService) private readonly userService: UserService, @Inject("STORE_CONFIG") private readonly storeConfig) {
+        console.log(storeConfig);
+    }
 
     @Post()
     createUser(@Body() user: UserDto): UserDto {

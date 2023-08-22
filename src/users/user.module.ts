@@ -2,11 +2,18 @@ import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
+interface StoreConfig {
+    dir: string;
+    path: string;
+}
 @Module({
     controllers: [UserController],
-    providers: [{
-        provide: "USER_SERVICE_1",
-        useClass: UserService
+    providers: [UserService, {
+        provide: "STORE_CONFIG",
+        useValue: {
+            dir: "/store",
+            path: "tuchan001"
+        } as StoreConfig
     }]
 })
 export class UserModule {}
